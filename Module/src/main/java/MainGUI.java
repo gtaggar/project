@@ -135,34 +135,44 @@ public class MainGUI extends JFrame {
         // between each one, print a separator line,
         // as e.g.
 
-        outputArea.append("\n--------------------\n");
+        String allSessions = sessions.getAllSessionsAsString();
+        if (allSessions.isEmpty()) {
+            outputArea.setText("No sessions available.");
+        } else {
+            outputArea.append(allSessions);
+        }
     }
 
     // search by ID if presesnt, mentor otherwise, display results
     private void searchSession() {
         // Search by ID if the ID field is not empty
         if (!idField.getText().trim().isEmpty()) {
-            int id = Integer.parseInt(idField.getText().trim());
-            // find session by ID, using a `searchByID` method
-            // ... code here ...
-            /* if (result != null)
-                // display session to the output area...
-            else
-                outputArea.setText("Session not found.");
-             */
+            try {
+                int id = Integer.parseInt(idField.getText().trim());
+                // find session by ID, using a `searchByID` method
+                Session result = sessions.searchByID(id);
+                if (result != null) {
+                    // display session to the output area...
+                    outputArea.setText(result.toString() + "\n--------------------\n");
+                } else {
+                    outputArea.setText("Session not found.");
+                }
+            } catch (NumberFormatException e) {
+                outputArea.setText("Invalid input: Session ID must be an integer.");
+            }
         }
         // Otherwise, search by mentor if the Mentor field is not empty
         else if (!mentorField.getText().trim().isEmpty()) {
             String mentor = mentorField.getText().trim();
             // find session by mentor. In this case, the result
             // may be a list of sessions...
-            // ... code here ...
-            /*
-            if (result != null)
+            String resultText = sessions.searchByMentorAsString(mentor);
+            if (!resultText.isEmpty()) {
                 // display all sessions in the list
-            else
+                outputArea.setText(resultText);
+            } else {
                 outputArea.setText("No session found for mentor: " + mentor);
-             */
+            }
         }
         // Nothing entered
         else {
