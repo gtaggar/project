@@ -1,39 +1,33 @@
 PROJECT 1 PROCESS JOURNAL
 
 Date: Monday, Sep 14, 2026
-----------------------------------------------------------------------
 Task: Project Setup & Team Planning
 Details:
 - Cloned the repository and configured the project environment in IntelliJ.
-- Met with project partner to review specifications and split responsibilities.
+- Split parts of the project between the both of us
 - Assigned tasks:
-  * My Focus: Session model, Add Session, Display, and Search functionality.
-  * Partner Focus: Remove Session, Register Participant, and remaining features.
+  dhruv: Session model, Add Session, Display, and Search functionality
+  sakhi: Remove Session, Register Participant, and remaining features
 
 Date: Tuesday, Sep 15, 2026
-----------------------------------------------------------------------
 Task: Session Model & Linked List Setup
 Details:
-- Created Session.java to store session details (id, title, mentor, date, location, current/max participants).
-- Added getters, constructor initialization, and formatted toString() output for UI rendering.
+- Created Session.java class to store session details (id, title, mentor, date, location, current/max participants).
 - Built custom linked list structure using Node class inside SessionList.java.
-- Implemented containsId() to prevent duplicate Session IDs.
+- Made containsId() to prevent duplicate Session IDs.
 
 Date: Wednesday, Sep 16, 2026
-----------------------------------------------------------------------
 Task: Add, Display, and Search Implementation
 Details:
-- Implemented sorted addSession() logic in SessionList.java to insert sessions chronologically by date.
-- Wired addSession() in MainGUI.java to process user inputs, handle errors, and clear text fields.
+- Changed addSession() in SessionList.java to be able to sort sessions chronologically by date when inserted.
+- Made addSession() work in MainGUI.java to process user inputs, handle errors, and clear text fields.
 - Added getAllSessionsAsString() to SessionList and connected displaySessions() in MainGUI.
 - Created searchByID() and searchByMentorAsString() methods in SessionList.
-- Completed searchSession() logic in MainGUI supporting conditional search by ID or Mentor.
-======================================================================
+- Made SessionList methods work in MainGUI.java to be able to search sessions by ID and/or mentor name.
 
 Date: Thursday, Sep 17, 2026
-----------------------------------------------------------------------
-Task: Register, Remove, and
+Task: Register, Remove, Tests
 Details:
 - I had added the registerParticipant method to the session class and implemented the removeSession method in SessionList.
-- Connected the remove button to the removeSession  method.
-- Tested adding sessiosn
+- Connected the remove button to the removeSession method.
+- Tested adding session
