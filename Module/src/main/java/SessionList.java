@@ -53,4 +53,37 @@ public class SessionList {
     public boolean isSession() {
         return head != null;
     }
+
+    public String getAllSessionsAsString() {
+        StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while (current != null) {
+            sb.append(current.session.toString()).append("\n--------------------\n");
+            current = current.next;
+        }
+        return sb.toString();
+    }
+
+    public Session searchByID(int id) {
+        Node current = head;
+        while (current != null) {
+            if (current.session.getId() == id) {
+                return current.session;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    public String searchByMentorAsString(String mentor) {
+        StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while (current != null) {
+            if (current.session.getMentor().equalsIgnoreCase(mentor)) {
+                sb.append(current.session.toString()).append("\n--------------------\n");
+            }
+            current = current.next;
+        }
+        return sb.toString();
+    }
 }
