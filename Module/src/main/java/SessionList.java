@@ -86,4 +86,39 @@ public class SessionList {
         }
         return sb.toString();
     }
+
+    public boolean removeSession (int id) {
+        if (head == null) {
+            return false;
+        }
+
+        if (head.session.getId()== id) {
+            head = head.next;
+            return true;
+        }
+
+        Node current = head;
+
+        while (current.next != null) {
+            if (current.next.session.getId() == id) {
+                current.next = current.next.next;
+                return true;
+            }
+
+            current = current.next;
+        }
+        return false;
+    }
+    public String registerParticipant (int id) {
+        Session session= searchByID(id);
+
+        if (session ==null) {
+            return ("Error: There is no session found with ID " + id);
+        }
+
+        if (session.registerParticipant()) {
+            return ("Participant registered succesfully!");
+        }
+        return ("Error: This session is already full!");
+    }
 }

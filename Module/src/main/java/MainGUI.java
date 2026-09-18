@@ -182,7 +182,19 @@ public class MainGUI extends JFrame {
 
     // given an id, remove that session from the list
     private void removeSession() {
-        int id = Integer.parseInt(idField.getText());
+        try {
+            int id = Integer.parseInt(idField.getText());
+
+            if (sessions.removeSession(id)) {
+                outputArea.setText("Session removed sucesfully.");
+                clearFields();
+            } else {
+                outputArea.setText("Error: There is no session found with ID" + id + "!");
+            }
+
+        } catch (NumberFormatException e) {
+            outputArea.setText("Invalid input: The Session ID must be a integer.");
+        }
         // remove the session, print an error to the outputArea
         // if it's not found
         // ... code here ...
@@ -191,7 +203,13 @@ public class MainGUI extends JFrame {
     // add one to the count of the specified session.
     // MUTATES participant count of session.
     private void registerParticipant() {
-        int id = Integer.parseInt(idField.getText());
+        try {
+            int id = Integer.parseInt(idField.getText());
+            outputArea.setText(sessions.registerParticipant(id));
+        } catch (NumberFormatException e) {
+            outputArea.setText("Invalid Input: The Session ID must be an integer.");
+        }
+
         // increment participants field of session,
         // print success or failure message.
     }

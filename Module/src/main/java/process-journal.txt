@@ -29,3 +29,11 @@ Details:
 - Created searchByID() and searchByMentorAsString() methods in SessionList.
 - Completed searchSession() logic in MainGUI supporting conditional search by ID or Mentor.
 ======================================================================
+
+Date: Thursday, Sep 17, 2026
+----------------------------------------------------------------------
+Task: Register, Remove, and
+Details:
+- I had added the registerParticipant method to the session class and implemented the removeSession method in SessionList.
+- Connected the remove button to the removeSession  method.
+- Tested adding sessiosn

@@ -45,6 +45,15 @@ public class Session {
         return maxParticipants;
     }
 
+    public  boolean registerParticipant () {
+        if (currentParticipants < maxParticipants) {
+             currentParticipants++;
+              return true;
+        } else {
+            return false;
+        }
+    }
+
     public String toString() {
         return String.format("ID: %d | Title: %s | Mentor: %s | Date: %s | Location: %s | Spots: %d/%d",
                 id, title, mentor, date, location, currentParticipants, maxParticipants);
